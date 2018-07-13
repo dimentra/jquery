@@ -3,17 +3,59 @@
 <head>
   <title>Kvadrat</title>
 <meta charset="utf-8">
-<style type="text/css" src="css/css.css">
+<style>
+  .common {
+    margin: 10px;
+    width:80px;
+    height:80px;
+    display:none;
+    color: white;
+  }
+  #divv {
+    height: 500px;
+    width: 500px;
+    background-color: pink;
+  }
 </style>
-<script src="js/jquery.min.js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+ function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillRect(25,25,100,100);
+    ctx.clearRect(45,45,60,60);
+    ctx.strokeRect(50,50,50,50);
+  }
+}
+
+  $(document).ready(function() {
+    $("#divv").mouseenter(function (){
+      // alert ('div');
+      $("#canvas").animate({
+        left: '100px',
+        marginTop: '100px',
+        height: '+=100px',
+        width: '+=100px'
+      }, 3000).fadeOut(2000);
+    });
+    // $("#fade_in").click(function() {
+    //   $(".kv").fadeIn(1000);
+    // });
+
+    // $("#fade_out").click(function() {
+    //    $(".kv").fadeOut(1000);
+    // });
+  });
 </script>
 </head>
 <body onload="draw();">
- <canvas id="canvas" width="150" height="150"></canvas>
+  <a href="mya4.html">CLICK</a><br>
    <button id="fade_in">fade_in</button>
-  <button id="fade_out">fade_out</button>
-  <div class="common div1">Div с классом div1</div>
-  <div class="common div2">Div с классом div2</div>
-  <div class="common div3">Div с классом div3</div>
+  <button id="fade_out">fade_out</button> <br>
+  <div id="divv">
+ <canvas id="canvas" onmouseleave="" class="kv" width="150" height="150"></canvas>
+  </div>
 </body>
 </html>
